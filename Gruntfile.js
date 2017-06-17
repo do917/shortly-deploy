@@ -3,6 +3,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      concatTask: {
+        src: ['public/client/*.js', 'public/lib/*.js', 'app/**/*.js', 'db/**/*.js', 'lib/**/*.js', 'views/**/*.js'],
+        dest: 'bundle.js'
+      }
     },
 
     mochaTest: {
@@ -21,6 +25,11 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      my_target: {
+        files: {
+          'public/dist/bundleUglified.js': ['bundle.js']
+        }
+      }
     },
 
     eslint: {
